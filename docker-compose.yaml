@@ -4,14 +4,13 @@ services:
   nginx:
     build: .
     image: umputun/nginx-le:latest
-    hostname: nginx-hello-world
+    hostname: nginx-iammeamone
     restart: unless-stopped
-    container_name: nginx-le
+    container_name: nginx-iammeamone
 
     ports:
-      - "80:80"
-      - "443:443"
-      - "8443:8443"
+      - "80"
+      - "443"
 
     volumes:
       - ./nginx/ssl:/etc/nginx/ssl:rw
@@ -34,14 +33,14 @@ services:
     env_file: .env
 
     depends_on:
-      - "hello-world"
+      - "iammeamone"
 
-  hello-world:
-      image: jwilder/whoami
-      container_name: hello-world
-      hostname: hello-world
-      ports:
-        - "8000"
+  iammeamone:
+    image: jwilder/whoami
+    container_name: iammeamone
+    hostname: Meamone
+    ports:
+      - "8000"
 
 networks:
   nginx-reverse-proxy:
